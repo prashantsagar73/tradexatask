@@ -31,6 +31,7 @@
         </form>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           {% if user.is_authenticated %}
+            <li><a href="{% url 'post-create' %}" class="nav-link px-2 text-white">New Post</a></li>
             <li><a href="{% url 'logout' %}" class="nav-link px-2 text-white">Logout</a></li>
             <li><a href="{% url 'profile' %}" class="nav-link px-2 text-white">Profile</a></li>
           {% else %}

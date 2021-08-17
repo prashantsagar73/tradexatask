@@ -10,9 +10,7 @@ class UserRegisterForm(UserCreationForm):
         model = User
         fields = ['first_name','last_name','username', 'email', 'password1', 'password2']
 
-    #  for update|edit the existing form
-
-
+# for update|edit the existing form
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
