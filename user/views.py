@@ -11,7 +11,7 @@ def home(request):
     context = {
         'posts': Post.objects.all()
     }
-    return render(request,"home.html",context)
+    return render(request,"user/home.html",context)
 
 def about(request):
     return render(request,"about.html")
@@ -24,10 +24,10 @@ def register (request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f' Your account has been created! Now you are able to login.')
-            return redirect('login')
+            return redirect('user/login')
     else:
         form = UserRegisterForm()
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'user/register.html', {'form': form})
 
 @login_required
 def profile(request):
@@ -47,24 +47,24 @@ def profile(request):
         'u_form': u_form,
         'p_form': p_form
     }
-    return render(request,'profile.html', context)
+    return render(request,'user/profile.html', context)
 
 
 # for listing the post to get their id
 class PostListView(ListView):
     model = Post
-    template_name = "blog/home.html"  #<app>/<model> _ <viewtype>.html
+    template_name = "user/home.html"  #<app>/<model> _ <viewtype>.html
     context_object_name = 'posts'
     ordering =['-date_time']
 
 class PostDetailView(DetailView):
     model = Post
-    template_name = 'post_detail.html'
+    template_name = 'user/post_detail.html'
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     fields =['title','content']
-    template_name = 'post_forms.html'
+    template_name = 'user/post_forms.html'
 
 
     def form_valid(self, form):
@@ -74,7 +74,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     fields =['title','content']
-    template_name = 'post_forms.html'
+    template_name = 'user/post_forms.html'
 
 
     def form_valid(self, form):
@@ -90,7 +90,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
-    template_name = 'post_confirm_delete.html'
+    template_name = 'user/post_confirm_delete.html'
     success_url= "/"
 
     def test_func(self):
