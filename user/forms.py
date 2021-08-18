@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
 
+# user registration forms
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
 
@@ -11,7 +12,6 @@ class UserRegisterForm(UserCreationForm):
         fields = ['first_name','last_name','username', 'email', 'password1', 'password2']
 
 # for update|edit the existing form
-
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
 
@@ -19,6 +19,7 @@ class UserUpdateForm(forms.ModelForm):
         model = User
         fields = ['username', 'email']
 
+# user porfile updatation
 class ProfileUpdateForm(forms.ModelForm):
 
     class Meta:

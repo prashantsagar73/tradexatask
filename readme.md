@@ -9,3 +9,11 @@ Task
 
 2. Products app with Product model.
     Product : name, weight, price, created_at, updated_at
+## solution
+
+1. USer
+ in this user can signup from home page and create their profile and post their blogs. only creator can edit or delete their post none of else.
+
+
+2. Product 
+    is a simplel E-commerce website where user can view the product and their categories and update it. 

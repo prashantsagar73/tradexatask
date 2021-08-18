@@ -12,11 +12,11 @@ def home(request):
         'posts': Post.objects.all()
     }
     return render(request,"user/home.html",context)
-
+# about page
 def about(request):
     return render(request,"about.html")
 
-
+# user registraiton manually
 def register (request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -29,6 +29,10 @@ def register (request):
         form = UserRegisterForm()
     return render(request, 'user/register.html', {'form': form})
 
+
+
+
+# user pofile
 @login_required
 def profile(request):
     if request.method == 'POST':
@@ -57,10 +61,12 @@ class PostListView(ListView):
     context_object_name = 'posts'
     ordering =['-date_time']
 
+# details view of single post
 class PostDetailView(DetailView):
     model = Post
     template_name = 'user/post_detail.html'
 
+# post creation by auth user
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     fields =['title','content']
@@ -71,6 +77,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+# update post by user porfile
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     fields =['title','content']
@@ -88,6 +95,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             return True
         return False
 
+# delete the post by their creater
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
     template_name = 'user/post_confirm_delete.html'
