@@ -17,3 +17,13 @@ Task
 
 2. Product 
     is a simplel E-commerce website where user can view the product and their categories and update it. 
+
+## Tools & languages 
+1. Backend- Django(python)
+2. Frontend - Bootstrap4
+3. Database - SQLlite
+
+Text-Editor: pycharmIDE
+
+portfolio website: https://prashanttech.herokuapp.com/
+Thankyou
