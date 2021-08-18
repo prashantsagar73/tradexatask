@@ -3,8 +3,8 @@ from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView,
 from .import views
 
 urlpatterns= [
-     path('', views.home,name ="Blog_home"),
-     path('', PostListView.as_view(), name ="Blog_home"),
+     path('blog/', views.home,name ="Blog_home"),
+     path('blog/', PostListView.as_view(), name ="Blog_home"),
      path('post/<int:pk>/', PostDetailView.as_view(), name ="post_detail"),
      path('post/<int:pk>/update/', PostUpdateView.as_view(), name ="post-update"),
      path('post/<int:pk>/delete/', PostDeleteView.as_view(), name ="post-delete"),

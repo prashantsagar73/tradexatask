@@ -19,11 +19,12 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 from user import views as user_views
+from product import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('product/', include('product.urls')),
-    path('', include('product.urls')),
+    path('',views.index),
     path('register/', user_views.register, name='register'),
     path('register/', user_views.register, name='register'),
     path('profile/', user_views.profile, name='profile'),
